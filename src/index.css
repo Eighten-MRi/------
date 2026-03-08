@@ -1,0 +1,118 @@
+:root {
+  /* Colors */
+  --color-primary: #4ade80; /* Soft Green */
+  --color-primary-dark: #22c55e;
+  --color-secondary: #60a5fa; /* Soft Blue */
+  --color-background: #f0f9ff; /* Very light blue */
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-text-subtle: #6b7280;
+  --color-error: #ef4444;
+
+  /* Typography */
+  --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  --font-size-base: 18px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+
+  /* Spacing */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+
+  /* Radius */
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(135deg, #e0f2fe 0%, #ecfdf5 100%);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-base);
+}
+
+#root {
+  width: 100%;
+  max-width: 800px; /* Tablet size */
+  height: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--color-text);
+  border: 2px solid #e5e7eb;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
