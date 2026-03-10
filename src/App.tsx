@@ -1,58 +1,20 @@
-import { useState } from 'react';
-import { Home } from './pages/Home';
-import { Questionnaire } from './pages/Questionnaire';
-import { Layout } from './components/Layout';
-import { Button } from './components/Button';
-
-type View = 'home' | 'questionnaire' | 'finish';
+import { QuestionnaireWizard } from './components/QuestionnaireWizard';
 
 function App() {
-  const [view, setView] = useState<View>('home');
-  const [patientId, setPatientId] = useState('');
-
-  const startQuestionnaire = (id: string) => {
-    setPatientId(id);
-    setView('questionnaire');
-  };
-
-  const finishQuestionnaire = () => {
-    setView('finish');
-  };
-
-  const reset = () => {
-    setPatientId('');
-    setView('home');
-  };
-
   return (
-    <div className="App">
-      {view === 'home' && (
-        <Home onStart={startQuestionnaire} />
-      )}
+    <div className="min-h-screen flex flex-col bg-background font-sans text-text">
+      <main className="flex-1 w-full max-w-4xl mx-auto p-4 md:p-8 flex flex-col">
+        <header className="mb-8 text-center mt-4">
+          <h1 className="text-3xl font-bold text-primary-dark">問診票</h1>
+          <p className="text-text-muted mt-2 text-lg">
+            より良い診療のため、以下の質問にお答えください。
+          </p>
+        </header>
 
-      {view === 'questionnaire' && (
-        <Questionnaire
-          patientId={patientId}
-          onComplete={finishQuestionnaire}
-        />
-      )}
-
-      {view === 'finish' && (
-        <Layout title="完了">
-          <div style={{ textAlign: 'center', padding: '3rem 0' }}>
-            <h2 style={{ marginBottom: '2rem', color: 'var(--color-primary-dark)' }}>
-              ご回答ありがとうございました
-            </h2>
-            <p style={{ marginBottom: '3rem', fontSize: '1.2rem' }}>
-              薬剤師にお声がけください。<br />
-              お薬の準備をしてお待ちしております。
-            </p>
-            <Button onClick={reset} variant="secondary">
-              トップに戻る
-            </Button>
-          </div>
-        </Layout>
-      )}
+        <div className="flex-1 flex flex-col bg-white rounded-2xl shadow-sm border border-primary-light/20 p-6 md:p-10 overflow-hidden relative">
+          <QuestionnaireWizard />
+        </div>
+      </main>
     </div>
   );
 }
